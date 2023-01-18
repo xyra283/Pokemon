@@ -61,33 +61,33 @@ function animate() {
     playerImage.width / 4,
     playerImage.height
   );
-  if (keys.w.pressed) background.position.y += 3;
-  else if (keys.a.pressed) background.position.x += 3;
-  else if (keys.s.pressed) background.position.y -= 3;
-  else if (keys.d.pressed) background.position.x -= 3;
+  if (keys.w.pressed && lastKey === "w") background.position.y += 3;
+  else if (keys.a.pressed && lastKey === "a") background.position.x += 3;
+  else if (keys.s.pressed && lastKey === "s") background.position.y -= 3;
+  else if (keys.d.pressed && lastKey === "d") background.position.x -= 3;
 }
 animate();
-
+let lastKey = "";
 window.addEventListener("keydown", (e) => {
   switch (e.key) {
     case "w":
       keys.w.pressed = true;
-      console.log("pressed w key");
+      lastKey = "w";
       break;
 
     case "a":
       keys.a.pressed = true;
-      console.log("pressed a key");
+      lastKey = "a";
       break;
 
     case "s":
       keys.s.pressed = true;
-      console.log("pressed s key");
+      lastKey = "s";
       break;
 
     case "d":
       keys.d.pressed = true;
-      console.log("pressed d key");
+      lastKey = "d";
       break;
   }
 });
